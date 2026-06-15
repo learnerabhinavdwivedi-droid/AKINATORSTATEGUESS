@@ -20,7 +20,7 @@ const DiamondSparkle = ({ top, left, size, delay, opacity }) => (
       opacity: [opacity, opacity + 0.3, opacity],
     }}
     transition={{
-      duration: 3 + Math.random() * 2,
+      duration: 3 + (delay % 2),
       repeat: Infinity,
       ease: "easeInOut",
       delay: delay,

@@ -15,7 +15,7 @@ const GlowingOrb = ({ top, left, size, color, delay }) => (
       opacity: [0.3, 0.5, 0.3] 
     }}
     transition={{ 
-      duration: 8 + Math.random() * 4, 
+      duration: 8 + (delay % 4), 
       repeat: Infinity, 
       ease: "easeInOut", 
       delay: delay 
@@ -124,13 +124,9 @@ export default function AkinatorApp() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            {/* Vector Asset Placeholder / Magic Lamp */}
-            <div className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_20px_rgba(245,158,11,0.6)] text-amber-400">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-                <path d="M12 2C12 2 14 5 14 7C14 8.5 12.5 9 12 11C11.5 13 15 14 15 16C15 18 10 18.5 7 18.5C4 18.5 2 17 2 15C2 13 6 12.5 8 11.5C10 10.5 10 9 10 7C10 5 12 2 12 2Z" fill="currentColor" opacity="0.8"/>
-                <path d="M4 21C4 20.4477 4.44772 20 5 20H19C19.5523 20 20 20.4477 20 21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21Z" fill="currentColor"/>
-                <path d="M19 15C19 13.5 22 13 22 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
+            {/* Magic Lamp Image */}
+            <div className="w-24 h-24 md:w-32 md:h-32 relative drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]">
+              <Image src="/magic_lamp.png" alt="magic lamp" fill className="object-contain" priority />
             </div>
 
             {/* Massive Typography Hierarchy */}
@@ -187,11 +183,16 @@ export default function AkinatorApp() {
                 {/* Character Asset */}
                 <Image 
                   src="/genie.png" 
-                  alt="Akinator Genie Vector"
+                  alt="winking genie"
                   fill
                   priority
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
                 />
+
+                {/* Magic Lamp Base */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-32 z-30 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)]">
+                  <Image src="/magic_lamp.png" alt="magic lamp" fill className="object-contain" priority />
+                </div>
 
                 {/* Tail Glow (Faint blur capsule beneath the tail) */}
                 <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-16 bg-amber-500/20 blur-[40px] rounded-[100%] z-10 pointer-events-none"></div>
@@ -349,7 +350,7 @@ export default function AkinatorApp() {
             >
               <Image 
                 src="/genie.png" 
-                alt="Akinator Genie Vector" 
+                alt="winking genie" 
                 fill
                 priority
                 className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
