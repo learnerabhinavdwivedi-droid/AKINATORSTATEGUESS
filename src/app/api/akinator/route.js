@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { AnkanitorEngine } from '@/lib/gameEngine';
+import { AkinatorEngine } from '@/lib/gameEngine';
 import { QUESTION_BANK } from '@/lib/questions';
 
 export async function POST(request) {
@@ -7,7 +7,7 @@ export async function POST(request) {
     const { history, latestUserResponse, latestAttributeKey } = await request.json();
 
     // Instantiate our local engine
-    const engine = new AnkanitorEngine();
+    const engine = new AkinatorEngine();
     let state = engine.start();
 
     // Replay the history to reconstruct the exact state of the game
@@ -32,7 +32,7 @@ export async function POST(request) {
     return NextResponse.json(state);
 
   } catch (error) {
-    console.error("Ankanitor Pipeline Processing Error:", error);
+    console.error("Akinator Pipeline Processing Error:", error);
     return NextResponse.json({ error: "Failed to compile state run" }, { status: 500 });
   }
 }

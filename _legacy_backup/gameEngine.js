@@ -4,7 +4,7 @@
  * progress calculation, and final guess triggering.
  */
 
-class AnkanitorEngine {
+class AkinatorEngine {
   constructor() {
     this.reset();
   }
@@ -294,5 +294,5 @@ class AnkanitorEngine {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { AnkanitorEngine };
+  module.exports = { AkinatorEngine };
 }

@@ -86,7 +86,7 @@ export default function ThemeSelection() {
         <div className="flex justify-center md:justify-end items-end h-full relative">
           <motion.img 
             src="/genie.png" 
-            alt="Ankanitor Genie" 
+            alt="Akinator Genie" 
             className="w-2/3 md:w-4/5 max-w-[350px] drop-shadow-2xl z-20"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

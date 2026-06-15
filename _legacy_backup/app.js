@@ -35,7 +35,7 @@
   };
 
   // ── Engine Instance ────────────────────────────────────────
-  const engine = new AnkanitorEngine();
+  const engine = new AkinatorEngine();
   let currentQuestionIndex = null;
 
   // ── SVG Gradient for Progress Ring ─────────────────────────

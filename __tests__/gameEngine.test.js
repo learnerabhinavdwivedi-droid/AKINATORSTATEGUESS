@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { AnkanitorEngine } from '../src/lib/gameEngine.js';
+import { AkinatorEngine } from '../src/lib/gameEngine.js';
 
-describe('AnkanitorEngine', () => {
+describe('AkinatorEngine', () => {
   let engine;
 
   beforeEach(() => {
-    engine = new AnkanitorEngine();
+    engine = new AkinatorEngine();
   });
 
   it('should initialize with a fresh game state', () => {

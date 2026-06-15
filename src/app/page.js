@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { AnkanitorEngine } from '../lib/gameEngine.js';
+import { AkinatorEngine } from '../lib/gameEngine.js';
 
 // Mystic glowing orb component for the background
 const GlowingOrb = ({ top, left, size, color, delay }) => (
@@ -23,7 +23,7 @@ const GlowingOrb = ({ top, left, size, color, delay }) => (
   />
 );
 
-export default function AnkanitorApp() {
+export default function AkinatorApp() {
   const [screen, setScreen] = useState("start"); // "start", "game", "result"
   
   // Game Logic State
@@ -42,7 +42,7 @@ export default function AnkanitorApp() {
   const processTurn = async (latestUserResponse, latestAttributeKey, currentHistory) => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/ankanitor', {
+      const response = await fetch('/api/akinator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ export default function AnkanitorApp() {
   // -------------------------------------------------------------
   if (screen === 'start') {
     return (
-      <main aria-label="Ankanitor Start Screen" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
+      <main aria-label="Akinator Start Screen" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
         
         {/* Arabian Nights Full Background */}
         <div 
@@ -187,7 +187,7 @@ export default function AnkanitorApp() {
                 {/* Character Asset */}
                 <Image 
                   src="/genie.png" 
-                  alt="Ankanitor Genie Vector"
+                  alt="Akinator Genie Vector"
                   fill
                   priority
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
@@ -295,7 +295,7 @@ export default function AnkanitorApp() {
   }
 
   return (
-    <main aria-label="Ankanitor Game Active" aria-live="polite" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
+    <main aria-label="Akinator Game Active" aria-live="polite" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
       
       {/* Arabian Nights Full Background */}
       <div 
@@ -349,7 +349,7 @@ export default function AnkanitorApp() {
             >
               <Image 
                 src="/genie.png" 
-                alt="Ankanitor Genie Vector" 
+                alt="Akinator Genie Vector" 
                 fill
                 priority
                 className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"

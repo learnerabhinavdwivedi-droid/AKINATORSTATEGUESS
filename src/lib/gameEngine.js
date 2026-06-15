@@ -7,7 +7,7 @@
 const { ANKANITOR_KNOWLEDGE_BASE } = require('./statesData.js');
 const { QUESTION_BANK } = require('./questions.js');
 
-class AnkanitorEngine {
+class AkinatorEngine {
   constructor() {
     this.reset();
   }
@@ -294,5 +294,5 @@ class AnkanitorEngine {
 }
 
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { AnkanitorEngine };
+  module.exports = { AkinatorEngine };
 }

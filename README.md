@@ -1,6 +1,6 @@
-# Ankanitor - The Indian State Genie
+# Akinator - The Indian State Genie
 
-**Ankanitor** is a highly intelligent, interactive web application built with **Next.js**, **React**, and **Tailwind CSS**. It serves as an Akinator-style guessing game specifically programmed to guess which **Indian State or Union Territory** the user is thinking of using progressive deduction and an entropy-maximizing questioning algorithm.
+**Akinator** is a highly intelligent, interactive web application built with **Next.js**, **React**, and **Tailwind CSS**. It serves as an Akinator-style guessing game specifically programmed to guess which **Indian State or Union Territory** the user is thinking of using progressive deduction and an entropy-maximizing questioning algorithm.
 
 ## 🎯 Problem Statement Alignment
 
