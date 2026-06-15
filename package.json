@@ -1,12 +1,14 @@
 {
   "name": "akinator",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "An AI-powered Akinator clone that guesses Indian States and Union Territories using progressive entropy-based deduction.",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",

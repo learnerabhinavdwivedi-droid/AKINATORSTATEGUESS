@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { AnkanitorEngine } from '../lib/gameEngine.js';
 
 // Mystic glowing orb component for the background
 const GlowingOrb = ({ top, left, size, color, delay }) => (
@@ -93,7 +95,7 @@ export default function AnkanitorApp() {
   // -------------------------------------------------------------
   if (screen === 'start') {
     return (
-      <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
+      <main aria-label="Ankanitor Start Screen" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
         
         {/* Arabian Nights Full Background */}
         <div 
@@ -149,6 +151,7 @@ export default function AnkanitorApp() {
             {/* Crimson & Gold Magic Carpet CTA */}
             <motion.button
               onClick={handleStart}
+              aria-label="Start the game"
               whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(220, 38, 38, 0.5)' }}
               whileTap={{ scale: 0.96 }}
               className="group relative overflow-hidden inline-flex items-center justify-center px-16 py-5 min-w-[240px] rounded-full font-extrabold text-2xl tracking-[0.25em] pl-[0.25em] uppercase whitespace-nowrap border border-[#F3D291] text-white bg-gradient-to-r from-red-700 via-red-600 to-amber-600 transition-all duration-300"
@@ -179,13 +182,15 @@ export default function AnkanitorApp() {
               <motion.div
                 animate={{ y: [0, -15, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
-                className="relative"
+                className="relative w-full aspect-square"
               >
                 {/* Character Asset */}
-                <motion.img 
+                <Image 
                   src="/genie.png" 
-                  alt="Ankanitor Genie" 
-                  className="w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
+                  alt="Ankanitor Genie Vector"
+                  fill
+                  priority
+                  className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
                 />
 
                 {/* Tail Glow (Faint blur capsule beneath the tail) */}
@@ -290,7 +295,7 @@ export default function AnkanitorApp() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
+    <main aria-label="Ankanitor Game Active" aria-live="polite" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
       
       {/* Arabian Nights Full Background */}
       <div 
@@ -334,16 +339,22 @@ export default function AnkanitorApp() {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="w-2/3 md:w-4/5 max-w-[350px] relative z-20"
+            className="w-2/3 md:w-4/5 max-w-[350px] relative z-20 aspect-square"
           >
-            <motion.img 
-              src="/genie.png" 
-              alt="Ankanitor Genie" 
-              className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-            />
+              className="w-full h-full"
+            >
+              <Image 
+                src="/genie.png" 
+                alt="Ankanitor Genie Vector" 
+                fill
+                priority
+                className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+              />
+            </motion.div>
           </motion.div>
         </div>
 
