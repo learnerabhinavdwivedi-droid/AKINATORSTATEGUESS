@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ankanitor Genie Engine — an Akinator-style game that guesses which Indian State or Union Territory you're thinking of using progressive deduction." />
+  <title>Ankanitor — Indian States Genie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- ═══════════════════════════════════════ -->
+  <!--  PARTICLE CANVAS (background effect)   -->
+  <!-- ═══════════════════════════════════════ -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  SCREEN 1: START                       -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="start-screen" class="screen active">
+    <div class="genie-orb-wrapper">
+      <div class="genie-orb">
+        <div class="orb-inner"></div>
+        <div class="orb-ring ring-1"></div>
+        <div class="orb-ring ring-2"></div>
+        <div class="orb-ring ring-3"></div>
+      </div>
+    </div>
+    <h1 class="title-glow">Ankanitor</h1>
+    <p class="subtitle">Think of an Indian State or Union Territory…<br/>I will read your mind.</p>
+    <button id="btn-start" class="btn-primary pulse-glow">
+      <span>Challenge the Genie</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <p class="hint-text">I'll guess it in under 20 questions ✨</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  SCREEN 2: GAME                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="game-screen" class="screen">
+    <header class="game-header">
+      <div class="turn-badge">
+        <span class="turn-label">Question</span>
+        <span id="turn-number" class="turn-number">1</span>
+        <span class="turn-of">/20</span>
+      </div>
+      <div class="progress-ring-wrapper">
+        <svg class="progress-ring" viewBox="0 0 120 120">
+          <circle class="progress-ring-bg" cx="60" cy="60" r="52" />
+          <circle id="progress-ring-fill" class="progress-ring-fill" cx="60" cy="60" r="52" />
+        </svg>
+        <div class="progress-ring-text">
+          <span id="progress-value">0</span><span class="progress-pct">%</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="question-card glass-card">
+      <div class="genie-mini">
+        <div class="genie-mini-orb"></div>
+      </div>
+      <p id="question-text" class="question-text">Loading question…</p>
+    </div>
+
+    <div class="answer-buttons" id="answer-buttons">
+      <button class="btn-answer btn-yes" data-answer="YES">
+        <span class="btn-icon">✅</span> Yes
+      </button>
+      <button class="btn-answer btn-probably" data-answer="PROBABLY">
+        <span class="btn-icon">🤔</span> Probably
+      </button>
+      <button class="btn-answer btn-dk" data-answer="DONT_KNOW">
+        <span class="btn-icon">🤷</span> Don't Know
+      </button>
+      <button class="btn-answer btn-pnot" data-answer="PROBABLY_NOT">
+        <span class="btn-icon">😐</span> Probably Not
+      </button>
+      <button class="btn-answer btn-no" data-answer="NO">
+        <span class="btn-icon">❌</span> No
+      </button>
+    </div>
+
+    <div class="leaderboard-panel glass-card">
+      <h3 class="leaderboard-title">🔮 Top Candidates</h3>
+      <div id="leaderboard-bars" class="leaderboard-bars"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  SCREEN 3: RESULT                      -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="result-screen" class="screen">
+    <div class="result-reveal">
+      <div class="reveal-orb">
+        <div class="orb-inner"></div>
+        <div class="orb-ring ring-1"></div>
+        <div class="orb-ring ring-2"></div>
+      </div>
+      <h2 class="reveal-label">I think you're thinking of…</h2>
+      <h1 id="result-name" class="result-name title-glow">—</h1>
+      <div class="result-stats">
+        <div class="stat-chip glass-card">
+          <span class="stat-label">Confidence</span>
+          <span id="result-confidence" class="stat-value">—%</span>
+        </div>
+        <div class="stat-chip glass-card">
+          <span class="stat-label">Questions</span>
+          <span id="result-turns" class="stat-value">—</span>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button id="btn-correct" class="btn-primary btn-success">
+          <span>🎉 Correct!</span>
+        </button>
+        <button id="btn-wrong" class="btn-secondary">
+          <span>😅 Wrong guess</span>
+        </button>
+      </div>
+      <div id="wrong-reveal" class="wrong-reveal" style="display:none;">
+        <p class="wrong-text">Oops! I'll do better next time. 🙏</p>
+        <button id="btn-play-again" class="btn-primary pulse-glow">
+          <span>Play Again</span>
+        </button>
+      </div>
+      <div id="correct-reveal" class="correct-reveal" style="display:none;">
+        <p class="correct-text">🧞 The Genie knows all! ✨</p>
+        <button id="btn-play-again-2" class="btn-primary pulse-glow">
+          <span>Play Again</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts: order matters (data → questions → engine → app) -->
+  <script src="statesData.js"></script>
+  <script src="questions.js"></script>
+  <script src="gameEngine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
