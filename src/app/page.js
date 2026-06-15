@@ -201,7 +201,7 @@ export default function AnkanitorApp() {
           </div>
 
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -391,6 +391,6 @@ export default function AnkanitorApp() {
           
         </div>
       </div>
-    </div>
+    </main>
   );
 }
