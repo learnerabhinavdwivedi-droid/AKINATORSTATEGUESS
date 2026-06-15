@@ -189,11 +189,6 @@ export default function AkinatorApp() {
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
                 />
 
-                {/* Magic Lamp Base */}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-32 z-30 drop-shadow-[0_0_15px_rgba(245,158,11,0.8)]">
-                  <Image src="/magic_lamp.png" alt="magic lamp" fill className="object-contain" priority />
-                </div>
-
                 {/* Tail Glow (Faint blur capsule beneath the tail) */}
                 <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-16 bg-amber-500/20 blur-[40px] rounded-[100%] z-10 pointer-events-none"></div>
               </motion.div>
