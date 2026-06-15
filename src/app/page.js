@@ -93,85 +93,106 @@ export default function AnkanitorApp() {
   // -------------------------------------------------------------
   if (screen === 'start') {
     return (
-      <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950 font-sans text-white">
-        {/* Background Canvas: Deep slate with glowing orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <GlowingOrb top="10%" left="20%" size="40vw" color="bg-indigo-900" delay={0} />
-          <GlowingOrb top="60%" left="60%" size="50vw" color="bg-purple-900" delay={2} />
-          <GlowingOrb top="40%" left="-10%" size="30vw" color="bg-blue-900" delay={4} />
-          <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]"></div>
+      <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
+        
+        {/* Arabian Nights Full Background */}
+        <div 
+          className="absolute inset-0 z-0 bg-[url('/arabian_nights_bg.png')] bg-cover bg-center bg-no-repeat"
+        ></div>
+
+        {/* Deep Cosmic Canvas Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Indigo Aura Left */}
+          <div className="absolute top-0 -left-[10%] w-[50vw] h-[70vh] bg-indigo-500/20 blur-[120px] rounded-full"></div>
+          {/* Warm Antique Gold Aura Right */}
+          <div className="absolute bottom-0 -right-[10%] w-[60vw] h-[80vh] bg-amber-500/10 blur-[150px] rounded-full"></div>
+          {/* Magic Dust Particle Grid */}
+          <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.15]"></div>
+          {/* Vignette Overlay to darken the sky for text readability */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a051d_100%)] opacity-80"></div>
+          <div className="absolute inset-0 bg-[#0a051d]/40"></div>
         </div>
 
         <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Column: Hero Text Hub */}
           <motion.div 
-            className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
+            className="flex flex-col items-center md:items-start text-center md:text-left space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            {/* Vector Asset Placeholder / Logo */}
-            <div className="w-16 h-16 md:w-20 md:h-20 mb-2 drop-shadow-[0_0_15px_rgba(243,210,145,0.6)]">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-[#F3D291]">
+            {/* Vector Asset Placeholder / Magic Lamp */}
+            <div className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_20px_rgba(245,158,11,0.6)] text-amber-400">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                 <path d="M12 2C12 2 14 5 14 7C14 8.5 12.5 9 12 11C11.5 13 15 14 15 16C15 18 10 18.5 7 18.5C4 18.5 2 17 2 15C2 13 6 12.5 8 11.5C10 10.5 10 9 10 7C10 5 12 2 12 2Z" fill="currentColor" opacity="0.8"/>
                 <path d="M4 21C4 20.4477 4.44772 20 5 20H19C19.5523 20 20 20.4477 20 21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21Z" fill="currentColor"/>
                 <path d="M19 15C19 13.5 22 13 22 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-widest leading-tight uppercase text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 drop-shadow-md">
-              THE MIND <br /> READER <br /> RETURNS.
+            {/* Massive Typography Hierarchy */}
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight leading-[1.1] drop-shadow-2xl">
+              <span className="text-white">THE MIND READER</span><br />
+              <span className="bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 bg-clip-text text-transparent">
+                RETURNS.
+              </span>
             </h1>
             
-            <p className="text-[#F3D291] text-lg md:text-xl font-medium tracking-wide max-w-md drop-shadow-sm">
-              Think of an Indian State or Union Territory. He will guess it with amazing accuracy.
-            </p>
+            {/* Context Boundary Subtitle */}
+            <div className="border-l-2 border-amber-500/40 pl-5 max-w-md">
+              <p className="text-slate-300/90 text-lg md:text-xl font-medium tracking-wide drop-shadow-sm leading-relaxed">
+                Think of an Indian State or Union Territory. He will guess it with amazing accuracy.
+              </p>
+            </div>
 
+            {/* Crimson & Gold Magic Carpet CTA */}
             <motion.button
               onClick={handleStart}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-8 relative inline-flex items-center justify-center px-16 py-4 min-w-[240px] rounded-full font-extrabold text-2xl tracking-[0.3em] pl-[0.3em] uppercase whitespace-nowrap shadow-[0_0_30px_rgba(220,38,38,0.5)] border-4 border-[#F3D291] text-white bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:shadow-[0_0_40px_rgba(243,210,145,0.6)] transition-all duration-300"
+              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(220, 38, 38, 0.5)' }}
+              whileTap={{ scale: 0.96 }}
+              className="group relative overflow-hidden inline-flex items-center justify-center px-16 py-5 min-w-[240px] rounded-full font-extrabold text-2xl tracking-[0.25em] pl-[0.25em] uppercase whitespace-nowrap border border-[#F3D291] text-white bg-gradient-to-r from-red-700 via-red-600 to-amber-600 transition-all duration-300"
             >
-              START
+              {/* Internal Reflective Diagonal Light Shimmer */}
+              <span className="absolute top-0 left-[-100%] w-1/2 h-full skew-x-[-30deg] bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:left-[200%] transition-all duration-[1.5s] ease-in-out pointer-events-none"></span>
+              
+              <span className="relative z-10 drop-shadow-md">START</span>
             </motion.button>
           </motion.div>
 
-          {/* Right Column: Genie Showcase */}
-          <div className="flex justify-center items-center h-full relative">
-            {/* Outer Div handles the 1.6s Entrance Fly-In */}
+          {/* Right Column: Genie Character Motion Pipeline */}
+          <div className="flex justify-center items-center h-full relative mt-12 md:mt-0">
+            
+            {/* The Flight Path Entrance Curve */}
             <motion.div
-              initial={{ y: 300, opacity: 0, scale: 0.8 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: 1.6, ease: "easeOut" }}
-              className="relative z-20 w-full max-w-[400px]"
+              initial={{ y: 250, scale: 0.7, rotate: 10, opacity: 0 }}
+              animate={{ 
+                y: [250, -30, 0], 
+                scale: [0.7, 1.05, 1], 
+                rotate: [10, -5, 0],
+                opacity: [0, 1, 1] 
+              }}
+              transition={{ duration: 1.6, times: [0, 0.6, 1], ease: "easeOut" }}
+              className="relative z-20 w-full max-w-[450px]"
             >
-              {/* Inner Div handles the Zig-Zag and Full Body Sway Animation */}
+              {/* Levitation Idle Cycle */}
               <motion.div
-                animate={{ 
-                  y: [0, -20, 10, -15, 0], 
-                  x: [0, 15, -10, 15, 0],
-                  rotate: [0, 3, -3, 2, 0]
-                }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="origin-bottom"
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+                className="relative"
               >
-                {/* Innermost Image handles the breathing stretch and Wink Callout Pulse */}
+                {/* Character Asset */}
                 <motion.img 
                   src="/genie.png" 
                   alt="Ankanitor Genie" 
-                  className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                  animate={{ scale: [1, 1.02, 1, 1.01, 1], scaleX: [1, 1.02, 0.98, 1, 1] }}
-                  transition={{ 
-                    duration: 5, 
-                    repeat: Infinity, 
-                    ease: "easeInOut",
-                    times: [0, 0.05, 0.1, 0.5, 1]
-                  }}
+                  className="w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
                 />
+
+                {/* Tail Glow (Faint blur capsule beneath the tail) */}
+                <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-16 bg-amber-500/20 blur-[40px] rounded-[100%] z-10 pointer-events-none"></div>
               </motion.div>
             </motion.div>
+
           </div>
 
         </div>
@@ -269,14 +290,24 @@ export default function AnkanitorApp() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950 font-sans text-white">
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a051d] font-sans text-white">
       
-      {/* Background Layered Elements - Mystic Game Theme */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <GlowingOrb top="10%" left="20%" size="40vw" color="bg-indigo-900" delay={0} />
-        <GlowingOrb top="60%" left="60%" size="50vw" color="bg-purple-900" delay={2} />
-        <GlowingOrb top="40%" left="-10%" size="30vw" color="bg-blue-900" delay={4} />
-        <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]"></div>
+      {/* Arabian Nights Full Background */}
+      <div 
+        className="absolute inset-0 z-0 bg-[url('/arabian_nights_bg.png')] bg-cover bg-center bg-no-repeat"
+      ></div>
+
+      {/* Deep Cosmic Canvas Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Indigo Aura Left */}
+        <div className="absolute top-0 -left-[10%] w-[50vw] h-[70vh] bg-indigo-500/20 blur-[120px] rounded-full"></div>
+        {/* Warm Antique Gold Aura Right */}
+        <div className="absolute bottom-0 -right-[10%] w-[60vw] h-[80vh] bg-amber-500/10 blur-[150px] rounded-full"></div>
+        {/* Magic Dust Particle Grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.15]"></div>
+        {/* Vignette Overlay to darken the sky for text readability */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0a051d_100%)] opacity-80"></div>
+        <div className="absolute inset-0 bg-[#0a051d]/40"></div>
       </div>
 
       {/* Floating Header UI */}

@@ -137,29 +137,26 @@ class AnkanitorEngine {
       // Delta 21–50 → linearly map to 36%–75%
       this.certaintyProgress = Math.round(36 + ((delta - 21) / 29) * 39);
     } else {
-      // Delta > 50 → linearly map to 76%–95%, capped at 95
-      this.certaintyProgress = Math.min(95, Math.round(76 + ((delta - 51) / 50) * 19));
+      // Delta > 50 → linearly map to 76%–99%, capped at 99
+      this.certaintyProgress = Math.min(99, Math.round(76 + ((delta - 51) / 100) * 23));
     }
   }
 
   /**
    * FINAL GUESS TRIGGER
    *
-   * If Delta crosses 75 points, OR if currentTurn hits 15,
+   * If certainty crosses 99%, OR if we have asked all 50 questions,
    * immediately toggle isFinalGuess: true and output the
    * name of the #1 ranked region as guessedStateName.
    */
   _checkFinalGuess() {
     const sorted = this.getSortedLeaderboard();
-    const topScore = sorted[0].confidenceScore;
-    const secondScore = sorted[1].confidenceScore;
-    const delta = topScore - secondScore;
 
-    if (delta >= 75 || this.currentTurn >= 15) {
+    if (this.certaintyProgress >= 99 || this.currentTurn >= QUESTION_BANK.length) {
       this.isFinalGuess = true;
       this.guessedStateName = sorted[0].stateName;
-      // Lock progress at a confident value
-      this.certaintyProgress = Math.max(this.certaintyProgress, 90);
+      // Lock progress at 99
+      this.certaintyProgress = 99;
     }
   }
 
