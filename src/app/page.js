@@ -126,7 +126,7 @@ export default function AkinatorApp() {
           >
             {/* Magic Lamp Image */}
             <div className="w-24 h-24 md:w-32 md:h-32 relative drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]">
-              <Image src="/magic_lamp.png" alt="magic lamp" fill className="object-contain" priority />
+              <Image src="/magic_lamp.png" alt="magic lamp" fill sizes="(max-width: 768px) 96px, 128px" className="object-contain" priority />
             </div>
 
             {/* Massive Typography Hierarchy */}
@@ -186,6 +186,7 @@ export default function AkinatorApp() {
                   alt="winking genie"
                   fill
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative z-20"
                 />
 
@@ -348,6 +349,7 @@ export default function AkinatorApp() {
                 alt="winking genie" 
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
               />
             </motion.div>
